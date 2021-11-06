@@ -1,0 +1,18 @@
+//React
+
+//This function will add slashes between numbers entered into a form field to create a date in the format MM/DD/YYYY
+
+const handleKeyDown = (event) => { //keydown happens before change, so value is 1 character less than after the change fires
+    const BACKSPACE_KEYDOWN = 8;
+    if (event.which !== BACKSPACE_KEYDOWN) {
+        let numChars = event.target.value.length;
+        if (numChars === 2 || numChars === 5) {
+            event.target.value += '/';
+        }
+        if (numChars === 9) {
+            let dateArray = event.target.value.split('/');
+            dateArray[2] = dateArray[2] + event.key; //keydown happens before change, so append the key to the end
+            event.target.value = `${dateArray[0]}/${dateArray[1]}/${dateArray[2]}`;
+        }
+    }
+}
