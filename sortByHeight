@@ -1,0 +1,36 @@
+//Some people are standing in a row in a park. There are trees between them which cannot be moved. 
+//Your task is to rearrange the people by their heights in a non-descending order without moving the trees. People can be very tall!
+
+//For a = [-1, 150, 190, 170, -1, -1, 160, 180], the output should be:
+//solution(a) = [-1, 150, 160, 170, -1, -1, 180, 190].
+
+
+function solution(a) {
+    let orderedList = [];   
+    let e = [];
+   
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] > 0) {
+            e.push(a[i]);
+        }
+    };
+   
+    function compareNums(x, y) {
+        return x -y;
+    };
+   
+    e.sort(compareNums);
+   
+    for (let j = 0; j < a.length; j++) {
+        console.log(a[j], 'a value');
+        if (a[j] >= 0) {
+            orderedList.push(e[0]);
+            e.shift();
+        } else {
+            orderedList.push(-1);
+        }
+    }
+ 
+    return orderedList;
+}
+ 
