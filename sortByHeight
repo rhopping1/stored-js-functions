@@ -6,31 +6,35 @@
 
 
 function solution(a) {
-    let orderedList = [];   
-    let e = [];
-   
+    let orderedList = [];    
+    let posNums = [];
+    
+    // get positive numbers from original list
     for (let i = 0; i < a.length; i++) {
         if (a[i] > 0) {
-            e.push(a[i]);
+            posNums.push(a[i]);
         }
     };
-   
+    
     function compareNums(x, y) {
         return x -y;
     };
-   
-    e.sort(compareNums);
-   
+    
+    //sort positive numbers
+    posNums.sort(compareNums);
+    
+    //make a new list with the -1 and ordered positive numbers
     for (let j = 0; j < a.length; j++) {
         console.log(a[j], 'a value');
         if (a[j] >= 0) {
-            orderedList.push(e[0]);
-            e.shift();
+            orderedList.push(posNums[0]);
+            posNums.shift();
         } else {
             orderedList.push(-1);
         }
     }
- 
+
     return orderedList;
 }
+
  
